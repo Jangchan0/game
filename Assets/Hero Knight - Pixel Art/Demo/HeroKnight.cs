@@ -69,6 +69,7 @@ public class HeroKnight : MonoBehaviour {
 
         // -- Handle input and movement --
         float inputX = Input.GetAxis("Horizontal");
+        float inputY = Input.GetAxis("Vertical");
 
         // Swap direction of sprite depending on walk direction
         if (inputX > 0)
@@ -84,8 +85,8 @@ public class HeroKnight : MonoBehaviour {
         }
 
         // Move
-        if (!m_rolling )
-            m_body2d.linearVelocity = new Vector2(inputX * m_speed, m_body2d.linearVelocity.y);
+        if (!m_rolling)
+            m_body2d.linearVelocity = new Vector2(inputX * m_speed, inputY * m_speed);
 
         //Set AirSpeed in animator
         m_animator.SetFloat("AirSpeedY", m_body2d.linearVelocity.y);
@@ -146,14 +147,14 @@ public class HeroKnight : MonoBehaviour {
             
 
         //Jump
-        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
-        {
-            m_animator.SetTrigger("Jump");
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
-            m_body2d.linearVelocity = new Vector2(m_body2d.linearVelocity.x, m_jumpForce);
-            m_groundSensor.Disable(0.2f);
-        }
+        // else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
+        // {
+        //     m_animator.SetTrigger("Jump");
+        //     m_grounded = false;
+        //     m_animator.SetBool("Grounded", m_grounded);
+        //     m_body2d.linearVelocity = new Vector2(m_body2d.linearVelocity.x, m_jumpForce);
+        //     m_groundSensor.Disable(0.2f);
+        // }
 
         //Run
         else if (Mathf.Abs(inputX) > Mathf.Epsilon)
