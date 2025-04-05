@@ -1,0 +1,4 @@
+repository "yongsa/yongsa@14569038055181@cloud"
+  path "/"
+    br "/main"
+    co "/main"
