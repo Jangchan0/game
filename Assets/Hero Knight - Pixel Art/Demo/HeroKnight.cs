@@ -3,7 +3,8 @@ using System.Collections;
 
 public class HeroKnight : MonoBehaviour {
 
-    [SerializeField] float      m_speed = 4.0f;
+    [SerializeField] float      X_m_speed = 4.0f;
+    [SerializeField] float      Y_m_speed = 2.0f;
     [SerializeField] float      m_jumpForce = 7.5f;
     [SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] bool       m_noBlood = false;
@@ -53,20 +54,21 @@ public class HeroKnight : MonoBehaviour {
         if(m_rollCurrentTime > m_rollDuration)
             m_rolling = false;
 
-        //Check if character just landed on the ground
-        if (!m_grounded && m_groundSensor.State())
-        {
-            m_grounded = true;
-            m_animator.SetBool("Grounded", m_grounded);
-        }
+        // //Check if character just landed on the ground
+        // if (!m_grounded && m_groundSensor.State())
+        // {
+        //     m_grounded = true;
+        //     m_animator.SetBool("Grounded", m_grounded);
+        // }
 
-        //Check if character just started falling
-        if (m_grounded && !m_groundSensor.State())
-        {
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
-        }
-
+        // //Check if character just started falling
+        // if (m_grounded && !m_groundSensor.State())
+        // {
+        //     m_grounded = false;
+        //     m_animator.SetBool("Grounded", m_grounded);
+        // }
+        m_grounded = true;
+        m_animator.SetBool("Grounded", m_grounded);
         // -- Handle input and movement --
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
@@ -86,7 +88,7 @@ public class HeroKnight : MonoBehaviour {
 
         // Move
         if (!m_rolling)
-            m_body2d.linearVelocity = new Vector2(inputX * m_speed, inputY * m_speed);
+            m_body2d.linearVelocity = new Vector2(inputX * X_m_speed, inputY * Y_m_speed);
 
         //Set AirSpeed in animator
         m_animator.SetFloat("AirSpeedY", m_body2d.linearVelocity.y);
@@ -157,7 +159,7 @@ public class HeroKnight : MonoBehaviour {
         // }
 
         //Run
-        else if (Mathf.Abs(inputX) > Mathf.Epsilon)
+        else if (Mathf.Abs(inputX) > Mathf.Epsilon||Mathf.Abs(inputY) > Mathf.Epsilon)
         {
             // Reset timer
             m_delayToIdle = 0.05f;
