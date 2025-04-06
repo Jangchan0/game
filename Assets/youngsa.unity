@@ -531,6 +531,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroKnight_Green
       objectReference: {fileID: 0}
+    - target: {fileID: 3805892186606954751, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
+      propertyPath: X_m_speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805892186606954751, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
+      propertyPath: m_noBlood
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3839578496210338396, guid: 2f7eeaf41636b0f4f8ca52ea6858fd36, type: 3}
       propertyPath: m_Simulated
       value: 1

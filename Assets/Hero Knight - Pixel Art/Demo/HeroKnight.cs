@@ -4,7 +4,7 @@ using System.Collections;
 public class HeroKnight : MonoBehaviour {
 
     [SerializeField] float      X_m_speed = 4.0f;
-    [SerializeField] float      Y_m_speed = 2.0f;
+    [SerializeField] float      Y_m_speed = 4.0f;
     [SerializeField] float      m_jumpForce = 7.5f;
     [SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] bool       m_noBlood = false;
@@ -43,6 +43,7 @@ public class HeroKnight : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
 
